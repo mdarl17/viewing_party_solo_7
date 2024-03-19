@@ -9,12 +9,10 @@ RSpec.describe User, type: :model do
     it { should_not allow_value('something somthing@something.something').for(:email) }
     it { should_not allow_value('something.something@').for(:email) }
     it { should_not allow_value('something').for(:email) }
-
   end
 
   describe 'associations' do
     it { should have_many :user_parties }
     it { should have_many(:viewing_parties).through(:user_parties) }
   end
-  
 end
