@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   get '/users/:id/search_results', to: 'users#search_results', as: 'search_results'
 
   resources :users, only: [:show, :create] do
+
+    resources :movies, only: [:index, :show] do 
+      resources :viewing_party, only: [:new, :create]
+    end
   end
 end
