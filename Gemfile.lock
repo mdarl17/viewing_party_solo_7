@@ -314,6 +314,7 @@ DEPENDENCIES
   rails (~> 7.1.2)
   rspec-rails
   sassc-rails
+  shoulda-matchers
   simplecov
   sprockets-rails
   stimulus-rails
