@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "a user searches for movies", type: :feature do 
+RSpec.describe "a user searches for movies", :vcr, type: :feature do 
   describe "When user visits '/users/:id/discover'" do 
     before(:each) do 
       @user = User.create!(name: 'Tommy', email: 'tommy@email.com')
@@ -16,4 +16,4 @@ RSpec.describe "a user searches for movies", type: :feature do
       expect(page).to have_button("Find Movies")
     end
   end
-end 
+end
