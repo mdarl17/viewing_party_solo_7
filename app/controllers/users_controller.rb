@@ -19,19 +19,24 @@ class UsersController < ApplicationController
       end   
    end
 
-   def discover
+   def search
       @user = User.find(params[:id])
+      if params[:top_movies]
+         # TODO
+         # @movies = returns TMDB's top movies hash; http call 
+         #   using `top movies` uri
+      else
+         # TODO
+         # facade method; takes advantage of ActiveRecord functions
+         #   to implememt `ILIKE` fuzzy title search
+         # @movies = facade.new.movie_search(:keywords)
+      end
+      # TODO
+      # redirect_to search results page; check project reqs
    end
-
-   def search_results
-      @user = User.find(params[:id])
-      @movies = Movie.movie_search(:keywords)
-   end
-
 private
 
   def user_params
       params.require(:user).permit(:name, :email)
   end
-
 end
