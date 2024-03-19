@@ -19,8 +19,14 @@ class UsersController < ApplicationController
       end   
    end
 
+   def discover
+      @user = User.find(params[:id])
+   end
 
-
+   def search_results
+      @user = User.find(params[:id])
+      @movies = Movie.movie_search(:keywords)
+   end
 
 private
 
