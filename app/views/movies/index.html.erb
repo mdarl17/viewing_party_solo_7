@@ -1,0 +1,10 @@
+<%= link_to  %>
+<h1>Search Results</h1>
+<% if @movies %>
+  <% @movies.each do |movie| %>
+    <div class="movies">
+      <p>Movie: <%= movie.title %></p>
+      <p>Vote Avg: <%= movie.vote %></p>
+    </div>
+  <% end  %>
+<% end %>
