@@ -1,8 +1,8 @@
 <%= link_to  %>
 <h1>Search Results</h1>
 <% if @movies %>
-  <% @movies.each do |movie| %>
-    <div class="movies">
+  <% @movies.each.with_index do |movie, idx| %>
+    <div class="movies" id=<%= "results-#{idx}" %>>
       <p>Movie: <%= movie.title %></p>
       <p>Vote Avg: <%= movie.vote %></p>
     </div>
