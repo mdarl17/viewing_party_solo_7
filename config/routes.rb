@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root "welcome#index"
   get '/register', to: 'users#new', as: 'register_user'
 
-  get '/users/:id/discover', to: 'users#search', as: 'search_movies'
+  get '/users/:id/discover', to: 'users#discover', as: 'search_movies'
   get '/users/:id/movies', to: 'movies#index', as: 'movies_results'
 
   resources :users, only: [:show, :create] do
