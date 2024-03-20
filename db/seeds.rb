@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # create Users
-10.times do 
-   User.create!(name: Faker::Name.name, email: Faker::Internet.email)
+10.times do |n|
+   User.create!(id: n+1, name: Faker::Name.name, email: Faker::Internet.email)
 end
 
 # create Parties
