@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=Strange%20Brew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - hidden_api_key
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - openresty
+      X-Memc:
+      - MISS, STORE
+      X-Memc-Key:
+      - 2922fa867bf67749a7e1e1978acc0812
+      X-Memc-Age:
+      - '0'
+      X-Memc-Expires:
+      - '22071'
+      Date:
+      - Wed, 20 Mar 2024 18:11:16 GMT
+      Cache-Control:
+      - public, max-age=19369
+      Etag:
+      - W/"939a13a18f9e824a4f6fb627d972a23b"
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Cache:
+      - RefreshHit from cloudfront
+      Via:
+      - 1.1 c4fb40b7909e4dd897bba2e297b284e6.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - ClNfLEm9empfrMDCzBbzV4bGBtxfowLevu5svBkyL4E2W00bPxGccA==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"page":1,"results":[{"adult":false,"backdrop_path":"/y5yCGyPKS0gk5IOne2y1FYuzJQm.jpg","genre_ids":[35],"id":12921,"original_language":"en","original_title":"Strange
+        Brew","overview":"Something is rotten at the Elsinore Brewery. Bob and Doug
+        McKenzie (as seen on SCTV) help the orphan Pam regain the brewery founded
+        by her recently-deceased father. But to do so, they must confront the suspicious
+        Brewmeister Smith and two teams of vicious hockey players.","popularity":12.7,"poster_path":"/rScplcvRHX7o7XK88SFb5mddo8y.jpg","release_date":"1983-08-26","title":"Strange
+        Brew","video":false,"vote_average":6.078,"vote_count":173},{"adult":false,"backdrop_path":null,"genre_ids":[99],"id":925335,"original_language":"en","original_title":"Strange
+        Brew","overview":"A Skateboard video from up north","popularity":1.712,"poster_path":"/2DrwLC9L8u4st82SnSVpGKeGbh7.jpg","release_date":"2008-11-20","title":"Strange
+        Brew","video":false,"vote_average":0.0,"vote_count":0},{"adult":false,"backdrop_path":null,"genre_ids":[10402,99],"id":87798,"original_language":"en","original_title":"Cream:
+        Strange Brew","overview":"The legendary super group in all its glory, featuring
+        9 classic tracks.  The title of this 60-minute retrospective on the legendary
+        power trio pretty well describes itself -- it is a strange amalgam of interviews
+        and some well-chosen (and some not so well-chosen) performance clips. Strangely
+        enough, the best part of the documentary, from the standpoint of information,
+        is the interview segment with Jack Bruce and lyricist Pete Brown describing
+        their way of working, and Ginger Baker''s recollection of how \"Strange Brew\"
+        came to be written out of another song altogether, \"Lawdy Mama.\"","popularity":0.999,"poster_path":"/ky6uPAT5J61o3EwkjCPZbsvopZ3.jpg","release_date":"1991-06-22","title":"Cream:
+        Strange Brew","video":true,"vote_average":0.0,"vote_count":0}],"total_pages":1,"total_results":3}'
+  recorded_at: Wed, 20 Mar 2024 18:11:16 GMT
+recorded_with: VCR 6.2.0
