@@ -1,12 +1,12 @@
 require "rails_helper" 
 
 RSpec.describe "Movies Results Page", :vcr, type: :feature do 
+  before(:each) do 
+    @user = User.create!(name: 'Tommy', email: 'tommy@email.com')
+    visit discover_path(@user.id)
+  end
+
   describe "two ways a user searches for movies" do 
-    before(:each) do 
-      @user = User.create!(name: 'Tommy', email: 'tommy@email.com')
-      visit search_movies_path(@user.id)
-    end
-    
     it "they can click the `Find Top Rated Movies` button" do 
       click_button("Find Top Rated Movies")
 
@@ -28,5 +28,13 @@ RSpec.describe "Movies Results Page", :vcr, type: :feature do
         end
       end
     end
+  end
+
+  it "has a button to return to the Discover page" do 
+    click_button("Find Top Rated Movies")
+    expect(page).to have_button("Back to Discover")
+    
+    click_button "Back to Discover"
+    expect(current_path).to eq(discover_path(@user.id))
   end
 end 
