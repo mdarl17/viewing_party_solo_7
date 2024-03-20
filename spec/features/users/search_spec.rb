@@ -4,7 +4,7 @@ RSpec.describe "a user searches for movies", :vcr, type: :feature do
   describe "When user visits '/users/:id/movies'" do 
     before(:each) do 
       @user = User.create!(name: 'Tommy', email: 'tommy@email.com', id: 1)
-      visit search_movies_path(@user.id)
+      visit discover_path(@user.id)
     end
     it "they see a button to discover 'Top Rated Movies'" do
       # json_response = File.read("spec/fixtures/webmock/top_rated.json")
