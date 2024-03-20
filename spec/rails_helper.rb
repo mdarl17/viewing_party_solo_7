@@ -65,7 +65,7 @@ end
 
 VCR.configure do |config| 
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
-  config.filter_sensitive_data('hidden_api_key') { Rails.application.credentials.propublica[:key] }
+  config.filter_sensitive_data('hidden_api_key') { Rails.application.credentials.TMDB[:key] }
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.default_cassette_options = { record: :new_episodes }
