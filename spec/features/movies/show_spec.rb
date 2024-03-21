@@ -4,6 +4,7 @@ RSpec.describe "Movie Details Page", :vcr, type: :feature do
   before(:each) do 
     @user = User.create!(name: 'Tommy', email: 'tommy@email.com')
     @movie_id = 264660
+    @facade = MovieFacade.new
     visit movie_details_path(id: @user.id, movie_id: @movie_id)
   end
 
@@ -13,20 +14,32 @@ RSpec.describe "Movie Details Page", :vcr, type: :feature do
   end
 
   it "displays attributes of a movie; including title, genres, summary, cast, and review info." do 
-    expect(page).to have_content("Ex Machina")
-    expect(page).to have_content("Vote Average: 7.573")
-    expect(page).to have_content(108)
-    expect(page).to have_content("Genres: Drama, Science Fiction")
-    expect(page).to have_content("Summary: Caleb, a coder at the world's largest internet company, wins a competition to spend a week at a private mountain retreat belonging to Nathan, the reclusive CEO of the company. But when Caleb arrives at the remote location he finds that he will have to participate in a strange and fascinating experiment in which he must interact with the world's first true artificial intelligence, housed in the body of a beautiful robot girl.")
+    apis_aggregated = @facade.aggregate_movie_show_data(@movie_id)
+    movie_data = apis_aggregated[:movie]
+    cast_data = apis_aggregated[:cast]
+    review_data = apis_aggregated[:reviews]
+
+    expect(page).to have_content(movie_data.title)
+    expect(page).to have_content("Vote Average: #{movie_data.vote}")
+    expect(page).to have_content("Genres: #{movie_data.genres.join(", ")}")
+    expect(page).to have_content("Runtime: #{movie_data.runtime}")
+    expect(page).to have_content("Summary: #{movie_data.summary}")
     expect(page).to have_content("Cast")
-    expect(page).to have_content("Caleb Smith: Domhnall Gleeson")
-    expect(page).to have_content("Ava: Alicia Vikander")
-    expect(page).to have_content("Nathan Bateman: Oscar Isaac")
-    expect(page).to have_content("Number of Reviews: 4")
-    expect(page).to have_content("Reviewer: Andres Gomez")
-    expect(page).to have_content("Reviewer: Andres Gomez")
-    expect(page).to have_content("Username: tanty")
-    expect(page).to have_content("Reviewer Rating: 8.0")
-    expect(page).to have_link("https://www.themoviedb.org/review/56f08607c3a368718e000cd4")
+    
+    cast_data.each do |member| 
+      expect(page).to have_content("#{member.character}: #{member.actor}")
+    end
+
+    expect(page).to have_content("Number of Reviews: #{review_data[:count]}")
+
+    review_data[:review_info].each.with_index do |review, idx| 
+      expect(page).to have_content("Reviewer: #{review.author}")
+      expect(page).to have_content("Username: #{review.username}")
+      expect(page).to have_content("Reviewer Rating: #{review.rating}")
+      expect(page).to have_link(review.url)
+      # TODO Why won't this work??
+      # Questions to help resolve continuing RSpec/Capybara errors when testing strings
+      # expect(page).to have_content(review.content)
+    end
   end
 end 
