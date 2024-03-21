@@ -1,5 +1,5 @@
 require "rails_helper"
-require "support/test_data_helper.rb"
+require "support/test_data_helper"
 
 RSpec.describe MovieFacade, :vcr do 
   before(:each) do 
