@@ -4,6 +4,14 @@ class MovieFacade
     @top_movies = false
   end
 
+  def aggregate_movie_show_data(movie_id)
+    {
+      movie: get_movie_data_with_id(movie_id), 
+      cast: get_cast_with_movie_id(movie_id),
+      reviews: get_reviews_with_movie_id(movie_id)
+    }
+  end
+
   def top_movies 
     top_movies = @service.get_top_movies[:results]
     create_movie_index_poros(top_movies)
@@ -29,14 +37,6 @@ class MovieFacade
     reviews = @service.get_reviews(movie_id)[:results]
     review_poros = create_review_poros(reviews)
     {count: review_poros.count, review_info: review_poros}
-  end
-
-  def aggregate_movie_show_data(movie_id)
-    {
-      movie: get_movie_data_with_id(movie_id), 
-      cast: get_cast_with_movie_id(movie_id),
-      reviews: get_reviews_with_movie_id(movie_id)
-    }
   end
 
   def create_movie_show_poro(attributes)
