@@ -1,4 +1,8 @@
 class MovieService
+  def by_id(movie_id)
+    get_url("https://api.themoviedb.org/3/movie/#{movie_id}?language=en-US")
+  end
+
   def get_top_movies
     get_url("/3/movie/top_rated?language=en-US&page=1")
   end
