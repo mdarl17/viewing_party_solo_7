@@ -11,6 +11,14 @@ class MovieService
     get_url("/3/search/movie?query=#{user_input}&include_adult=false&language=en-US&page=1")
   end
 
+  def get_cast(movie_id) 
+    get_url("/3/movie/264660/credits?language=en-US")
+  end
+
+  def get_reviews(movie_id) 
+    get_url("https://api.themoviedb.org/3/movie/264660/reviews?language=en-US&page=1")
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
