@@ -9,7 +9,6 @@ class MoviesController < ApplicationController
       return
     elsif params[:keywords]
       @movies = facade.keywords_search(params[:keywords])
-      @movies
       render :index
       return
     end
@@ -19,6 +18,9 @@ class MoviesController < ApplicationController
   def show 
     facade = MovieFacade.new
     @user = User.find(params[:id])
-    @movie = facade.find_movie_with_id(params[:movie_id])[0]
+    movie_data = facade.aggregate_movie_show_data(params[:movie_id])
+    @movie = movie_data[:movie]
+    @cast = movie_data[:cast]
+    @reviews = movie_data[:reviews]
   end
 end
