@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/264660?language=en-US
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - hidden_api_key
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 20 Mar 2024 22:30:35 GMT
+      Server:
+      - openresty
+      Cache-Control:
+      - public, max-age=20381
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - 7732ebd4e5e0df28ae6ecb2e0e7321d9
+      X-Memc-Age:
+      - '3228'
+      X-Memc-Expires:
+      - '20381'
+      Etag:
+      - W/"ac7451cf230a1c59475f2b6d78be319c"
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 e1b5abb53c407f0a057625c46693461c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - KgzqNnJ9P88W9FO7ZlgjmAUPfn1-Rfw8ah5nWT-qFsN6PSdbOjQ_uQ==
+      Age:
+      - '850'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"adult":false,"backdrop_path":"/jFxxqdEQ9TkXQSytO7qM8wlwXL1.jpg","belongs_to_collection":null,"budget":15000000,"genres":[{"id":18,"name":"Drama"},{"id":878,"name":"Science
+        Fiction"}],"homepage":"http://exmachina-movie.com/","id":264660,"imdb_id":"tt0470752","original_language":"en","original_title":"Ex
+        Machina","overview":"Caleb, a coder at the world''s largest internet company,
+        wins a competition to spend a week at a private mountain retreat belonging
+        to Nathan, the reclusive CEO of the company. But when Caleb arrives at the
+        remote location he finds that he will have to participate in a strange and
+        fascinating experiment in which he must interact with the world''s first true
+        artificial intelligence, housed in the body of a beautiful robot girl.","popularity":51.592,"poster_path":"/iJAe7tHMlqtiCBcz048yqvXGeM5.jpg","production_companies":[{"id":284,"logo_path":"/6a26if3IKy7mlrQuGHHVp6ufQtF.png","name":"DNA
+        Films","origin_country":"GB"},{"id":6705,"logo_path":"/e8EXNSfwr5E9d3TR8dHKbQnQK4W.png","name":"Film4
+        Productions","origin_country":"GB"},{"id":93105,"logo_path":"/asuzX794BM1gCettTxUoLxGNovd.png","name":"IAC
+        Films","origin_country":"US"},{"id":258,"logo_path":null,"name":"Scott Rudin
+        Productions","origin_country":"US"}],"production_countries":[{"iso_3166_1":"GB","name":"United
+        Kingdom"},{"iso_3166_1":"US","name":"United States of America"}],"release_date":"2015-01-21","revenue":36869414,"runtime":108,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"There
+        is nothing more human than the will to survive","title":"Ex Machina","video":false,"vote_average":7.573,"vote_count":12717}'
+  recorded_at: Wed, 20 Mar 2024 22:44:45 GMT
+recorded_with: VCR 6.2.0

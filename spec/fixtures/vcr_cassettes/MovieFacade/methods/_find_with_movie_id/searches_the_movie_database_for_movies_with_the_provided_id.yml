@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/13981?language=en-US
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - hidden_api_key
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 20 Mar 2024 22:29:34 GMT
+      Server:
+      - openresty
+      Cache-Control:
+      - public, max-age=26414
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - 7165f74ee81d56ed016c28a45603e499
+      X-Memc-Age:
+      - '1042'
+      X-Memc-Expires:
+      - '26414'
+      Etag:
+      - W/"fcb4627072d4d100add475c10c51b326"
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 824a5d9ed02451bcb68b15ae5991dce0.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - cYO1bEyLPMZCLO8mPPSLs3KHcDVRd_QHk4IfeKGdME4ggq0xgLJuUQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhZHVsdCI6ZmFsc2UsImJhY2tkcm9wX3BhdGgiOiIvNWpiSVZwNmR3R29Wb3ZNU1hxSmZDT0dmcnlQLmpwZyIsImJlbG9uZ3NfdG9fY29sbGVjdGlvbiI6eyJpZCI6ODc4MDAsIm5hbWUiOiJBcHBsZXNlZWQgQ29sbGVjdGlvbiIsInBvc3Rlcl9wYXRoIjoiLzk0STJrTE13UUhjaUhlMzk2ZXZURlk4UlpvdC5qcGciLCJiYWNrZHJvcF9wYXRoIjoiL2RxZDFreG5uYkF6ekR6VU53aXhKU0txdThpOS5qcGcifSwiYnVkZ2V0IjowLCJnZW5yZXMiOlt7ImlkIjoxNiwibmFtZSI6IkFuaW1hdGlvbiJ9LHsiaWQiOjI4LCJuYW1lIjoiQWN0aW9uIn0seyJpZCI6NTMsIm5hbWUiOiJUaHJpbGxlciJ9LHsiaWQiOjg3OCwibmFtZSI6IlNjaWVuY2UgRmljdGlvbiJ9XSwiaG9tZXBhZ2UiOiJodHRwOi8vd3d3LmV4bWFjaGluYS5qcC8iLCJpZCI6MTM5ODEsImltZGJfaWQiOiJ0dDEwNDM4NDIiLCJvcmlnaW5hbF9sYW5ndWFnZSI6ImphIiwib3JpZ2luYWxfdGl0bGUiOiLjgqjjgq/jgrnjg57jgq3jg4oiLCJvdmVydmlldyI6IkFzIG1lbWJlcnMgb2YgRVNXQVQsIHRoZSBlbGl0ZSBmb3JjZXMgc2VydmluZyBPbHltcHVzLCBEZXVuYW4gYW5kIEJyaWFlcmVvcyBhcmUgZGVwbG95ZWQgYW55d2hlcmUgdHJvdWJsZSBzdHJpa2VzLiBPbHltcHVzIGZpbmRzIGl0c2VsZiB1bmRlciBhIHN0ZWFsdGggYXR0YWNrIC0gY3lib3JnIHRlcnJvcmlzbSwgZGVhZGx5IG5hbm90ZWNoIHplYWxvdHMsIGFuZCByaW90aW5nIGNpdGl6ZW5zIGFyZSBqdXN0IHNvbWUgb2YgdGhlIHRocmVhdHMgdGhhdCBEZXVuYW4gbXVzdCBjb250ZW5kIHdpdGggYXMgc2hlIGZpZ2h0cyB0byBzYXZlIE9seW1wdXMhIiwicG9wdWxhcml0eSI6MjIuNDkzLCJwb3N0ZXJfcGF0aCI6Ii9rcmVzS2lzNEx1WVBzMVBXYmVKMkZZeXlYUkEuanBnIiwicHJvZHVjdGlvbl9jb21wYW5pZXMiOlt7ImlkIjo1NTQyLCJsb2dvX3BhdGgiOiIvYXlFNExJcW9BV290YXZvN3hkdlluZ3dxR01MLnBuZyIsIm5hbWUiOiJUb2VpIEFuaW1hdGlvbiIsIm9yaWdpbl9jb3VudHJ5IjoiSlAifSx7ImlkIjozMzYxLCJsb2dvX3BhdGgiOiIvc0RLV2tpVkpSWTBnbjFqNU5Cc2VHS2xnRnlZLnBuZyIsIm5hbWUiOiJEaWdpdGFsIEZyb250aWVyIiwib3JpZ2luX2NvdW50cnkiOiJKUCJ9LHsiaWQiOjMzNjUsImxvZ29fcGF0aCI6bnVsbCwibmFtZSI6IlRZTyBQcm9kdWN0aW9ucyIsIm9yaWdpbl9jb3VudHJ5IjoiSlAifSx7ImlkIjo3NDE0LCJsb2dvX3BhdGgiOm51bGwsIm5hbWUiOiJNaWNvdHQgXHUwMDI2IEJhc2FyYSBLLksuIiwib3JpZ2luX2NvdW50cnkiOiJKUCJ9LHsiaWQiOjExNjQyLCJsb2dvX3BhdGgiOm51bGwsIm5hbWUiOiJFeCBNYWNoaW5hIEZpbG0gUGFydG5lcnMiLCJvcmlnaW5fY291bnRyeSI6IiJ9LHsiaWQiOjExMzc1MCwibG9nb19wYXRoIjoiL0EzUVZaOUFoMHlJMmQyR2lYVUZwZGxiVGd5ci5wbmciLCJuYW1lIjoiU0VHQSIsIm9yaWdpbl9jb3VudHJ5IjoiSlAifSx7ImlkIjoxMzA3MCwibG9nb19wYXRoIjoiL2tzMkZzY3BBR1lsZmo0WmF3ZFFGNXZndFd5TS5wbmciLCJuYW1lIjoiVGFrYXJhVG9teSIsIm9yaWdpbl9jb3VudHJ5IjoiSlAifSx7ImlkIjoyODEyLCJsb2dvX3BhdGgiOm51bGwsIm5hbWUiOiJMaW9uIFJvY2sgUHJvZHVjdGlvbnMiLCJvcmlnaW5fY291bnRyeSI6IlVTIn0seyJpZCI6NTgyMiwibG9nb19wYXRoIjoiL3F5VGJSZ0N5VTlOTEt2S2FpUVZiYWR0cjdSWS5wbmciLCJuYW1lIjoiVG9laSBDb21wYW55Iiwib3JpZ2luX2NvdW50cnkiOiJKUCJ9XSwicHJvZHVjdGlvbl9jb3VudHJpZXMiOlt7Imlzb18zMTY2XzEiOiJKUCIsIm5hbWUiOiJKYXBhbiJ9LHsiaXNvXzMxNjZfMSI6IlVTIiwibmFtZSI6IlVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYSJ9XSwicmVsZWFzZV9kYXRlIjoiMjAwNy0xMC0xOSIsInJldmVudWUiOjAsInJ1bnRpbWUiOjEwNSwic3Bva2VuX2xhbmd1YWdlcyI6W3siZW5nbGlzaF9uYW1lIjoiSmFwYW5lc2UiLCJpc29fNjM5XzEiOiJqYSIsIm5hbWUiOiLml6XmnKzoqp4ifV0sInN0YXR1cyI6IlJlbGVhc2VkIiwidGFnbGluZSI6IldoZXJlIHRoZXJlJ3MgZGVzcGFpciwgaG9wZSBjb21lcyBpbiB0aHJlZXM6IGEgSHVtYW4sIGEgQ3lib3JnIGFuZCBhIEJpb3JvaWQuIiwidGl0bGUiOiJBcHBsZXNlZWQ6IEV4IE1hY2hpbmEiLCJ2aWRlbyI6ZmFsc2UsInZvdGVfYXZlcmFnZSI6Ni40MjYsInZvdGVfY291bnQiOjE5N30=
+  recorded_at: Wed, 20 Mar 2024 22:29:34 GMT
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/264660?language=en-US
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - hidden_api_key
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 20 Mar 2024 22:30:35 GMT
+      Server:
+      - openresty
+      Cache-Control:
+      - public, max-age=20381
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - 7732ebd4e5e0df28ae6ecb2e0e7321d9
+      X-Memc-Age:
+      - '3228'
+      X-Memc-Expires:
+      - '20381'
+      Etag:
+      - W/"ac7451cf230a1c59475f2b6d78be319c"
+      Vary:
+      - Accept-Encoding
+      - Origin
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 c29390732f5bc4b2c7832623ae6e492e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - ZpJZuRGnbBpFdVe6qwt67h-VvhWEjn2DT8qqq9boiI9m3Tw2rbcS3w==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"adult":false,"backdrop_path":"/jFxxqdEQ9TkXQSytO7qM8wlwXL1.jpg","belongs_to_collection":null,"budget":15000000,"genres":[{"id":18,"name":"Drama"},{"id":878,"name":"Science
+        Fiction"}],"homepage":"http://exmachina-movie.com/","id":264660,"imdb_id":"tt0470752","original_language":"en","original_title":"Ex
+        Machina","overview":"Caleb, a coder at the world''s largest internet company,
+        wins a competition to spend a week at a private mountain retreat belonging
+        to Nathan, the reclusive CEO of the company. But when Caleb arrives at the
+        remote location he finds that he will have to participate in a strange and
+        fascinating experiment in which he must interact with the world''s first true
+        artificial intelligence, housed in the body of a beautiful robot girl.","popularity":51.592,"poster_path":"/iJAe7tHMlqtiCBcz048yqvXGeM5.jpg","production_companies":[{"id":284,"logo_path":"/6a26if3IKy7mlrQuGHHVp6ufQtF.png","name":"DNA
+        Films","origin_country":"GB"},{"id":6705,"logo_path":"/e8EXNSfwr5E9d3TR8dHKbQnQK4W.png","name":"Film4
+        Productions","origin_country":"GB"},{"id":93105,"logo_path":"/asuzX794BM1gCettTxUoLxGNovd.png","name":"IAC
+        Films","origin_country":"US"},{"id":258,"logo_path":null,"name":"Scott Rudin
+        Productions","origin_country":"US"}],"production_countries":[{"iso_3166_1":"GB","name":"United
+        Kingdom"},{"iso_3166_1":"US","name":"United States of America"}],"release_date":"2015-01-21","revenue":36869414,"runtime":108,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"There
+        is nothing more human than the will to survive","title":"Ex Machina","video":false,"vote_average":7.573,"vote_count":12717}'
+  recorded_at: Wed, 20 Mar 2024 22:30:35 GMT
+recorded_with: VCR 6.2.0
