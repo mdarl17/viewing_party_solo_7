@@ -42,4 +42,9 @@ module TestDataHelper
       }
     ]
   end
+
+  def self.movies_show_data(movie_id)
+    facade = MovieFacade.new
+    facade.aggregate_movie_show_data(movie_id)
+  end
 end
