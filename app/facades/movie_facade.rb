@@ -14,6 +14,11 @@ class MovieFacade
     convert_to_movie_poros(search_results)
   end
 
+  def find_movie_with_id(movie_id)
+    search_result = @service.by_id(movie_id)
+    convert_to_movie_poros([search_result])
+  end
+
   def convert_to_movie_poros(results)
     results.map do |movie|
       MoviePoro.new(movie)
