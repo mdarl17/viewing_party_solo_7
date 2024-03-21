@@ -51,9 +51,9 @@ RSpec.describe MovieFacade, :vcr do
       end
     end
 
-    describe "#find_movie_with_id" do 
+    describe "#get_movie_data_with_id" do 
       it "searches the movie database for movies with the provided id" do 
-        movie = @facade.find_movie_with_id(264660)
+        movie = @facade.get_movie_data_with_id(264660)
 
         expect(movie[0]).to be_a MoviePoro
         expect(movie[0].id).to eq(264660)
