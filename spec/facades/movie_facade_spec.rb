@@ -19,12 +19,15 @@ RSpec.describe MovieFacade, :vcr do
           expect(movie).to be_a MoviePoro
         end
 
+        expect(top_movies[0].id).to eq(278)
         expect(top_movies[0].title).to eq("The Shawshank Redemption")
         expect(top_movies[0].vote).to eq(8.704)
 
+        expect(top_movies[1].id).to eq(238)
         expect(top_movies[1].title).to eq("The Godfather")
         expect(top_movies[1].vote).to eq(8.695)
 
+        expect(top_movies[2].id).to eq(240)
         expect(top_movies[2].title).to eq("The Godfather Part II")
         expect(top_movies[2].vote).to eq(8.576)
       end
@@ -48,6 +51,17 @@ RSpec.describe MovieFacade, :vcr do
       end
     end
 
+    describe "#find_movie_with_id" do 
+      it "searches the movie database for movies with the provided id" do 
+        movie = @facade.find_movie_with_id(264660)
+
+        expect(movie[0]).to be_a MoviePoro
+        expect(movie[0].id).to eq(264660)
+        expect(movie[0].title).to eq("Ex Machina")
+        expect(movie[0].vote).to eq(7.573)
+      end
+    end
+
     describe "#convert_to_movie_poros" do 
       it "given an array of movies with full data, it returns poros for each, with 'title' and 'vote' attributes" do 
         movies_full_data = TestDataHelper.movies_full_data
@@ -55,7 +69,7 @@ RSpec.describe MovieFacade, :vcr do
 
         movie_poros.each do |movie|
           expect(movie).to be_a MoviePoro
-          expect(movie.public_methods(false).map(&:to_sym)).to match_array([:title, :vote])
+          expect(movie.public_methods(false).map(&:to_sym)).to match_array([:id, :title, :vote])
         end
       end
     end
