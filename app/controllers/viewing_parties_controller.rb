@@ -18,11 +18,9 @@ class ViewingPartiesController < ApplicationController
     end
 
     viewing_party = ViewingParty.new(viewing_party_params)
-
     if viewing_party.save
       viewing_party.user_parties.create(viewing_party_id: viewing_party.id, user_id: params[:user_id], host: true)
       guests = viewing_party.parse_guests(params)
-
       guests.each do |guest| 
         viewing_party.user_parties.create(user_party_params)
       end
@@ -38,7 +36,7 @@ class ViewingPartiesController < ApplicationController
   private
 
   def viewing_party_params 
-    params.permit(:viewing_party_id, :duration, :date, :start_time)
+    params.permit(:viewing_party_id, :duration, :date, :start_time, :movie_id)
   end
 
   def user_party_params 
