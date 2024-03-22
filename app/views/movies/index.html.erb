@@ -1,4 +1,4 @@
-<%= button_to "Return to Discover", discover_path(@user.id), class: "btn discover", method: :get %>
+<%= button_to "Discover", discover_path(@user.id), class: "btn discover", method: :get %>
 <h1>Search Results</h1>
 <% if @movies %>
   <% @movies.each.with_index do |movie, idx| %>
