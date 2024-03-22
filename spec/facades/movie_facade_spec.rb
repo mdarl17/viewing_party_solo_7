@@ -1,5 +1,4 @@
 require "rails_helper"
-require "support/test_data_helper"
 
 RSpec.describe MovieFacade, :vcr do 
   before(:each) do 
@@ -64,8 +63,10 @@ RSpec.describe MovieFacade, :vcr do
 
     describe "#convert_to_movie_poros" do 
       it "given an array of movies with full data, it returns poros for each, with 'title' and 'vote' attributes" do 
-        movies_full_data = TestDataHelper.movies_full_data
-        movie_poros = @facade.create_movie_index_poros(movies_full_data)
+        load_test_data
+
+        movie_show_data = movies_full_data
+        movie_poros = @facade.create_movie_index_poros(movie_show_data)
 
         movie_poros.each do |movie|
           expect(movie).to be_a MovieIndexPoro
