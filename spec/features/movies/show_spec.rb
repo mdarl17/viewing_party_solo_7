@@ -30,7 +30,7 @@ RSpec.describe "Movie Details Page", :vcr, type: :feature do
       expect(page).to have_content("#{member.character}: #{member.actor}")
     end
 
-    expect(page).to have_content("Number of Reviews: #{review_data[:count]}")
+    expect(page).to have_content("#{review_data[:count]} Reviews")
 
     review_data[:review_info].each.with_index do |review, idx| 
       expect(page).to have_content("Reviewer: #{review.author}")
