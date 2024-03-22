@@ -32,9 +32,9 @@ RSpec.describe "Movies Results Page", :vcr, type: :feature do
 
   it "has a button to return to the Discover page" do 
     click_button("Find Top Rated Movies")
-    expect(page).to have_button("Return to Discover")
+    expect(page).to have_button("Discover")
     
-    click_button "Return to Discover"
+    click_button "Discover"
     expect(current_path).to eq(discover_path(@user.id))
   end
 end 

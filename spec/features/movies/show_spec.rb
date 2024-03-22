@@ -10,7 +10,7 @@ RSpec.describe "Movie Details Page", :vcr, type: :feature do
 
   it "has a button to create a Viewing Parth" do 
     expect(page).to have_button("Create a Viewing Party")
-    expect(page).to have_button("Return to Discover")
+    expect(page).to have_button("Discover")
   end
 
   it "displays attributes of a movie; including title, genres, summary, cast, and review info." do 
