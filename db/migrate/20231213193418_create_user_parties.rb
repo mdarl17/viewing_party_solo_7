@@ -3,7 +3,7 @@ class CreateUserParties < ActiveRecord::Migration[7.0]
     create_table :user_parties do |t|
       t.references :viewing_party, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.boolean :host
+      t.boolean :host, default: false
 
       t.timestamps
     end

@@ -1,5 +1,5 @@
-module TestDataHelper
-  def self.movies_full_data
+def load_test_data 
+  def movies_full_data
     [
       {
           "adult": false,
@@ -42,4 +42,35 @@ module TestDataHelper
       }
     ]
   end
+
+  def movies_show_data(movie_id)
+    facade = MovieFacade.new
+    facade.aggregate_movie_show_data(movie_id)
+  end
+
+  # create Users
+  10.times do |n|
+    User.create!(id: n+1, name: Faker::Name.name, email: Faker::Internet.email)
+  end
+
+  # create Parties
+  5.times do 
+    ViewingParty.create!(duration: rand(0..240), date: Faker::Date.forward(days: rand(1..14)), start_time: Time.new.strftime("%H:%M"))
+  end
+
+  # set Hosts 
+  UserParty.create!(viewing_party: ViewingParty.first, user: User.first, host: true)
+  UserParty.create!(viewing_party: ViewingParty.second, user: User.second, host: true)
+  UserParty.create!(viewing_party: ViewingParty.third, user: User.third, host: true)
+  UserParty.create!(viewing_party: ViewingParty.fourth, user: User.fourth, host: true)
+  UserParty.create!(viewing_party: ViewingParty.last, user: User.fifth, host: true)
+
+  # set invites
+  UserParty.create!(viewing_party: ViewingParty.first, user: User.second, host: false)
+  UserParty.create!(viewing_party: ViewingParty.first, user: User.third, host: false)
+  UserParty.create!(viewing_party: ViewingParty.second, user: User.fourth, host: false)
+  UserParty.create!(viewing_party: ViewingParty.second, user: User.fourth, host: false)
+  UserParty.create!(viewing_party: ViewingParty.last, user: User.second, host: false)
+  UserParty.create!(viewing_party: ViewingParty.last, user: User.first, host: false)
+  UserParty.create!(viewing_party: ViewingParty.last, user: User.last, host: false)
 end

@@ -29,3 +29,42 @@ p {
   color: blue;
   text-decoration: none;
 }
+
+.invited-users {
+  text-align: left; /* Optional: Align checkboxes to the center */
+  padding: 5px;
+}
+
+.txt {
+  text-align: left;
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: inline-block;
+}
+
+/* Style every third checkbox to start a new row */
+.checkbox-container input[type="checkbox"]:nth-child(3n+1) {
+  clear: left;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto; /* Adjust as needed */
+  gap: 10px; /* Adjust as needed */
+  align-items: center; /* Align items vertically */
+}
+
+.grid span {
+  text-align: right; /* Align text to the right */
+}
+
+.title {
+  font-style: italic;
+  color: #777;
+  // text-decoration: underline;
+}
