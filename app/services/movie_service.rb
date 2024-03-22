@@ -12,11 +12,11 @@ class MovieService
   end
 
   def get_cast(movie_id) 
-    get_url("/3/movie/264660/credits?language=en-US")
+    get_url("/3/movie/#{movie_id}/credits?language=en-US")
   end
 
   def get_reviews(movie_id) 
-    get_url("https://api.themoviedb.org/3/movie/264660/reviews?language=en-US&page=1")
+    get_url("https://api.themoviedb.org/3/movie/#{movie_id}/reviews?language=en-US&page=1")
   end
 
   def get_url(url)
