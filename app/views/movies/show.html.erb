@@ -11,7 +11,7 @@
 <% end  %>
 <br>
 <h3 style="text-decoration: underline">Reviews</h3>
-<p>Number of Reviews: <%= @reviews[:count] %></p>
+<p><%= @reviews[:count] %> Reviews</p>
 <% @reviews[:review_info].each do |review| %>
   <p>Reviewer: <%= review.author %></p>
   <p>Username: <%= review.username %></p>
