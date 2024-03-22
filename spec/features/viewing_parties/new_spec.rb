@@ -58,26 +58,22 @@ RSpec.describe "New Viewing Party page", :vcr, type: :feature do
       expect(page).to have_content("The party duration can't be shorter than the movie runtime")
     end
 
-    # why won't the new viewing party show up in new ViewingParty.all search?!?!
-    # it does show up when I pry in controller and look for it.
-    # other ViewingParty movies created have 'nil' ID because they are created with Faker data
-    # the movie id needs to be real if it is to be used for API calls to TMDB
-
-    xit "adds a movie to the viewing party to the viewing party" do 
+    it "adds a movie to the viewing party to the viewing party" do 
       visit new_viewing_party_path(user_id: User.last.id, movie_id: @movie.id)
 
-      fill_in :duration, with: @movie.runtime - 45
+      fill_in :duration, with: @movie.runtime + 45
       fill_in :date, with: "05/12/24"
       fill_in :start_time, with: "7:00"
       fill_in :guest_1, with: User.first.email
       fill_in :guest_2, with: User.second.email
       fill_in :guest_3, with: User.third.email
 
+      expect(ViewingParty.count).to eq(5)
+      
       click_button "Create Party"
-
-      new_party = ViewingParty.last
-
-      expect(new_party.movie_id).to eq(@movie.id)
+      
+      expect(ViewingParty.count).to eq(6)
+      expect(ViewingParty.last.movie_id).to eq(@movie.id)
     end
   end
 end 
