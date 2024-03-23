@@ -52,7 +52,7 @@ RSpec.describe MovieFacade, :vcr do
 
     describe "#get_movie_data_with_id" do 
       it "searches the movie database for movies with the provided id" do 
-        movie = @facade.aggregate_movie_show_data(264660)
+        movie = @facade.aggregate_movie_data(264660)
 
         expect(movie[:movie]).to be_a MovieShowPoro
         expect(movie[:movie].id).to eq(264660)
@@ -65,8 +65,8 @@ RSpec.describe MovieFacade, :vcr do
       it "given an array of movies with full data, it returns poros for each, with 'title' and 'vote' attributes" do 
         load_test_data
 
-        movie_show_data = movies_full_data
-        movie_poros = @facade.create_movie_index_poros(movie_show_data)
+        movie_data = movies_full_data
+        movie_poros = @facade.create_movie_poros(movie_data)
 
         movie_poros.each do |movie|
           expect(movie).to be_a MovieIndexPoro

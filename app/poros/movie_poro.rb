@@ -1,4 +1,4 @@
-class MovieShowPoro 
+class MoviePoro 
   attr_reader :id, :title, :vote, :runtime, :genres, :summary
 
   def initialize(attributes)

@@ -14,7 +14,7 @@ RSpec.describe "Movie Details Page", :vcr, type: :feature do
   end
 
   it "displays attributes of a movie; including title, genres, summary, cast, and review info." do 
-    apis_aggregated = @facade.aggregate_movie_show_data(@movie_id)
+    apis_aggregated = @facade.aggregate_movie_data(@movie_id)
     movie_data = apis_aggregated[:movie]
     cast_data = apis_aggregated[:cast]
     review_data = apis_aggregated[:reviews]

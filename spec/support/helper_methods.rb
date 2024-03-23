@@ -45,7 +45,7 @@ def load_test_data
 
   def movies_show_data(movie_id)
     facade = MovieFacade.new
-    facade.aggregate_movie_show_data(movie_id)
+    facade.aggregate_movie_data(movie_id)
   end
 
   # create Users
