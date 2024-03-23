@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
   def show 
     facade = MovieFacade.new
     @user = User.find(params[:id])
-    movie_data = facade.aggregate_movie_show_data(params[:movie_id])
+    movie_data = facade.aggregate_movie_data(params[:movie_id])
     @movie = movie_data[:movie]
     @cast = movie_data[:cast]
     @reviews = movie_data[:reviews]
