@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "User Dashboard", type: :type do
+RSpec.describe "User Dashboard", type: :feature do
   before(:each) do 
     load_test_data
   end
