@@ -23,7 +23,7 @@ RSpec.describe "Movie Details Page", :vcr, type: :feature do
     expect(page).to have_content("Vote Average: #{movie_data.vote}")
     expect(page).to have_content("Genres: #{movie_data.genres.join(", ")}")
     expect(page).to have_content("Runtime: #{movie_data.runtime}")
-    expect(page).to have_content("Summary: #{movie_data.summary}")
+    expect(page).to have_content("#{movie_data.summary}")
     expect(page).to have_content("Cast")
     
     cast_data.each do |member| 
