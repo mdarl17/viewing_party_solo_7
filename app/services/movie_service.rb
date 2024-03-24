@@ -11,7 +11,7 @@ class MovieService
     get_url("/3/search/movie?query=#{user_input}&include_adult=false&language=en-US&page=1")
   end
 
-  def get_cast(movie_id) 
+  def get_cast(movie_id)
     get_url("/3/movie/#{movie_id}/credits?language=en-US")
   end
 
