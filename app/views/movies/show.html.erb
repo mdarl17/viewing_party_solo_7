@@ -1,20 +1,20 @@
 <%= button_to "Discover", discover_path(@user.id), class: "btn discover", method: :get %>
 <%= button_to "Create a Viewing Party", "", class: "btn new-party", method: :get %>
-<h1 class="hdr-1"><%= @movie.title %></h1>
-<p>Vote Average: <%= @movie.vote %></p>
-<p>Runtime: <%= @movie.runtime %> minues</p>
-<p>Genres: <%= @movie.genres.join(", ") %>
+<h1 class="hdr-1"><%= @facade.title %></h1>
+<p>Vote Average: <%= @facade.vote %></p>
+<p>Runtime: <%= @facade.runtime %> minues</p>
+<p>Genres: <%= @facade.genres.join(", ") %>
 <p class="hdr-sum">Summary</p>
-<p class="summary"><%= @movie.summary %></p>
+<p class="summary"><%= @facade.summary %></p>
 <br><br>
 <h3 style="text-decoration: underline">Cast</h3>
-<% @cast.each do |member| %>
+<% @facade.cast.each do |member| %>
   <p><%= "#{member.character}: #{member.actor}" %></p>
 <% end  %>
 <br>
 <h3 style="text-decoration: underline">Reviews</h3>
-<p><%= @reviews[:count] %> Reviews</p>
-<% @reviews[:review_info].each do |review| %>
+<p><%= @facade.reviews[:count] %> Reviews</p>
+<% @facade.reviews[:rev_hash].each do |review| %>
   <p>Reviewer: <%= review.author %></p>
   <p>Username: <%= review.username %></p>
   <p>Reviewer Rating: <%= review.rating %></p>

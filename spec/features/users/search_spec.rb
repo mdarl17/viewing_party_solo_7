@@ -21,8 +21,8 @@ RSpec.describe "a user searches for movies", :vcr, type: :feature do
     end
 
     it "they see a field to search movie titles by keyword", :vcr do 
-      expect(page).to have_field(:keywords)
-      fill_in(:keywords, with: "Strange Brew")
+      expect(page).to have_field(:keyword_or_movie_id)
+      fill_in(:keyword_or_movie_id, with: "Strange Brew")
     
       click_button "Find Movies"
     

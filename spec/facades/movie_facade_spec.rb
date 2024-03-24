@@ -1,26 +1,24 @@
 require "rails_helper"
 
 RSpec.describe MovieFacade, :vcr do 
-  before(:each) do 
-    @facade = MovieFacade.new
-  end
-
   it "exists" do 
-    expect(@facade).to be_a MovieFacade
+    facade = MovieFacade.new(top_movies: true, keywords:nil, movie_id: nil)
+    expect(facade).to be_a MovieFacade
   end
 
   describe "methods" do 
-    describe "#top_movies" do 
+    describe "#movies" do 
       it "returns TMDB's top movies as an array of ruby objects with title and average vote attributes" do 
-        top_movies = @facade.top_movies
-        
+        facade = MovieFacade.new(top_movies: true, keywords: false, movie_id: false)
+        top_movies = facade.movies
+
         top_movies.each do |movie|
           expect(movie).to be_a MoviePoro
         end
 
         expect(top_movies[0].id).to eq(278)
         expect(top_movies[0].title).to eq("The Shawshank Redemption")
-        expect(top_movies[0].vote).to eq(8.704)
+        expect(top_movies[0].vote).to eq(8.705)
 
         expect(top_movies[1].id).to eq(238)
         expect(top_movies[1].title).to eq("The Godfather")
@@ -28,49 +26,42 @@ RSpec.describe MovieFacade, :vcr do
 
         expect(top_movies[2].id).to eq(240)
         expect(top_movies[2].title).to eq("The Godfather Part II")
-        expect(top_movies[2].vote).to eq(8.576)
+        expect(top_movies[2].vote).to eq(8.6)
       end
     end
 
-    describe "#keywords_search" do 
+    describe "#movies(keyword)" do 
       it "returns a user's search results that case-insensitively and partially match, as ruby objects" do
-        search_result = @facade.keywords_search("Strange Brew")
+        facade = MovieFacade.new(top_movies: false, keywords: "Strange Brew", movie_id: nil)
 
-        search_result.each do |movie|
+        facade.movies.each do |movie|
           expect(movie).to be_a MoviePoro
         end
 
-        expect(search_result[0].title).to eq("Strange Brew")
-        expect(search_result[0].vote).to eq(6.078)
+        expect(facade.movies[0].title).to eq("Strange Brew")
+        expect(facade.movies[0].vote).to eq(6.078)
+      end
 
-        search_result = @facade.keywords_search("Strang")
+      it "returns a user's search results that case-insensitively and partially match, as ruby objects" do
+        facade = MovieFacade.new(top_movies: false, keywords: "StrANg", movie_id: nil)
 
-        expect(search_result[0].title).to eq("Pirates of the Caribbean: On Stranger Tides")
-        expect(search_result[0].vote).to eq(6.546)
+        facade.movies.each do |movie|
+          expect(movie.title.downcase).to include("strang")
+          expect(movie).to be_a MoviePoro
+        end
+        
+        expect(facade.movies[0].title).to eq("Pirates of the Caribbean: On Stranger Tides")
+        expect(facade.movies[0].vote).to eq(6.546)
       end
     end
 
-    describe "#get_movie_data_with_id" do 
+    describe "#movie(movie_id)" do 
       it "searches the movie database for movies with the provided id" do 
-        movie = @facade.aggregate_movie_data(264660)
-
-        expect(movie[:movie]).to be_a MoviePoro
-        expect(movie[:movie].id).to eq(264660)
-        expect(movie[:movie].title).to eq("Ex Machina")
-        expect(movie[:movie].vote).to eq(7.573)
-      end
-    end
-
-    describe "#convert_to_movie_poros" do 
-      it "given an array of movies with full data, it returns poros for each, with 'title' and 'vote' attributes" do 
-        load_test_data
-
-        movie_data = movies_full_data
-        movie_poros = @facade.create_movie_poros(movie_data)
-
-        movie_poros.each do |movie|
-          expect(movie).to be_a MoviePoro
-        end
+        facade =  MovieFacade.new(top_movies: false, keywords: nil, movie_id: 264660)
+        expect(facade.movies).to be_a MoviePoro
+        expect(facade.movies.id).to eq(264660)
+        expect(facade.movies.title).to eq("Ex Machina")
+        expect(facade.movies.vote).to eq(7.573)
       end
     end
   end

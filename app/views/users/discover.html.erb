@@ -5,6 +5,6 @@
 
 <%= form_with url: movies_results_path, data: {turbo: false}, method: :get, local: true do |f| %>
   <%= f.label :enter_keywords %>
-  <%= f.text_field :keywords %>
+  <%= f.text_field :keyword_or_movie_id %>
   <%= f.submit "Find Movies" %>
 <% end %>

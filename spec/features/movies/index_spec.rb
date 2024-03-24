@@ -17,14 +17,14 @@ RSpec.describe "Movies Results Page", :vcr, type: :feature do
     end
 
     it "a user can do a case-insensitive, partial match search for movie titles" do 
-      fill_in(:keywords, with: "Strange")
+      fill_in(:keyword_or_movie_id, with: "Strange")
       click_button "Find Movies"
 
       expect(current_path).to eq(movies_results_path(@user.id))
       
       page.all(".movies").map.with_index do |movie_el, idx|
         within("#results-#{idx}") do 
-          expect(page.body.downcase).to include("strange")
+            expect(page.body.downcase).to include("strange")
         end
       end
     end

@@ -3,16 +3,14 @@ require "rails_helper"
 RSpec.describe "New Viewing Party page", :vcr, type: :feature do 
   before(:each) do 
     load_test_data
-    movie_details = movies_show_data(264660)
-    @movie = movie_details[:movie]
-    @cast = movie_details[:cast]
-    @reviews = movie_details[:reviews]
+    @movie_id = 264660
+    @facade = MovieFacade.new(top_movies: false, keywords: nil, movie_id: @movie_id)
   end
    describe "a user creates a new viewing party" do 
     it "has a form users can fill out and submit to make a new viewing party" do 
-      visit new_viewing_party_path(user_id: User.first.id, movie_id: @movie.id)
+      visit new_viewing_party_path(user_id: User.first.id, movie_id: @movie_id)
 
-      expect(page).to have_content(@movie.title)
+      expect(page).to have_content(@facade.movies.title)
       expect(page).to have_field(:duration)
       expect(page).to have_field(:date)
       expect(page).to have_field(:start_time)
@@ -27,9 +25,9 @@ RSpec.describe "New Viewing Party page", :vcr, type: :feature do
     it "when the form is submitted a new user will be created" do 
       user = User.last
 
-      visit new_viewing_party_path(user_id: user.id, movie_id: @movie.id)
+      visit new_viewing_party_path(user_id: user.id, movie_id: @movie_id)
 
-      fill_in :duration, with: @movie.runtime + 45
+      fill_in :duration, with: @facade.movies.runtime + 45
       fill_in :date, with: "05/12/24"
       fill_in :start_time, with: "7:00"
       fill_in :guest_1, with: User.first.email
@@ -43,9 +41,9 @@ RSpec.describe "New Viewing Party page", :vcr, type: :feature do
 
     # sad path 
     it "will not create a viewing party if the party duration is shorter than the movie length" do 
-      visit new_viewing_party_path(user_id: User.last.id, movie_id: @movie.id)
+      visit new_viewing_party_path(user_id: User.last.id, movie_id: @movie_id)
 
-      fill_in :duration, with: @movie.runtime - 45
+      fill_in :duration, with: @facade.movies.runtime - 45
       fill_in :date, with: "05/12/24"
       fill_in :start_time, with: "7:00"
       fill_in :guest_1, with: User.first.email
@@ -59,9 +57,9 @@ RSpec.describe "New Viewing Party page", :vcr, type: :feature do
     end
 
     it "adds a movie to the viewing party to the viewing party" do 
-      visit new_viewing_party_path(user_id: User.last.id, movie_id: @movie.id)
+      visit new_viewing_party_path(user_id: User.last.id, movie_id: @movie_id)
 
-      fill_in :duration, with: @movie.runtime + 45
+      fill_in :duration, with: @facade.movies.runtime + 45
       fill_in :date, with: "05/12/24"
       fill_in :start_time, with: "7:00"
       fill_in :guest_1, with: User.first.email
@@ -73,7 +71,7 @@ RSpec.describe "New Viewing Party page", :vcr, type: :feature do
       click_button "Create Party"
       
       expect(ViewingParty.count).to eq(6)
-      expect(ViewingParty.last.movie_id).to eq(@movie.id)
+      expect(ViewingParty.last.movie_id).to eq(@movie_id)
     end
   end
 end 
