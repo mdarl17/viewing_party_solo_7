@@ -13,9 +13,9 @@ RSpec.describe MovieFacade, :vcr do
     describe "#top_movies" do 
       it "returns TMDB's top movies as an array of ruby objects with title and average vote attributes" do 
         top_movies = @facade.top_movies
-
+        
         top_movies.each do |movie|
-          expect(movie).to be_a MovieIndexPoro
+          expect(movie).to be_a MoviePoro
         end
 
         expect(top_movies[0].id).to eq(278)
@@ -37,7 +37,7 @@ RSpec.describe MovieFacade, :vcr do
         search_result = @facade.keywords_search("Strange Brew")
 
         search_result.each do |movie|
-          expect(movie).to be_a MovieIndexPoro
+          expect(movie).to be_a MoviePoro
         end
 
         expect(search_result[0].title).to eq("Strange Brew")
@@ -54,7 +54,7 @@ RSpec.describe MovieFacade, :vcr do
       it "searches the movie database for movies with the provided id" do 
         movie = @facade.aggregate_movie_data(264660)
 
-        expect(movie[:movie]).to be_a MovieShowPoro
+        expect(movie[:movie]).to be_a MoviePoro
         expect(movie[:movie].id).to eq(264660)
         expect(movie[:movie].title).to eq("Ex Machina")
         expect(movie[:movie].vote).to eq(7.573)
@@ -69,8 +69,7 @@ RSpec.describe MovieFacade, :vcr do
         movie_poros = @facade.create_movie_poros(movie_data)
 
         movie_poros.each do |movie|
-          expect(movie).to be_a MovieIndexPoro
-          expect(movie.public_methods(false).map(&:to_sym)).to match_array([:id, :title, :vote])
+          expect(movie).to be_a MoviePoro
         end
       end
     end
