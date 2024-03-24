@@ -1,10 +1,12 @@
 <%= button_to "Discover", discover_path(@user.id), class: "btn discover", method: :get %>
 <%= button_to "Create a Viewing Party", "", class: "btn new-party", method: :get %>
-<h1><%= @movie.title %></h1>
+<h1 class="hdr-1"><%= @movie.title %></h1>
 <p>Vote Average: <%= @movie.vote %></p>
-<p>Runtime: <%= @movie.runtime %></p>
+<p>Runtime: <%= @movie.runtime %> minues</p>
 <p>Genres: <%= @movie.genres.join(", ") %>
-<p>Summary: <%= @movie.summary %>
+<p class="hdr-sum">Summary</p>
+<p class="summary"><%= @movie.summary %></p>
+<br><br>
 <h3 style="text-decoration: underline">Cast</h3>
 <% @cast.each do |member| %>
   <p><%= "#{member.character}: #{member.actor}" %></p>
