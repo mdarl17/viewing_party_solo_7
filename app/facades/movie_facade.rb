@@ -25,7 +25,7 @@ class MovieFacade
 
   def get_movie_data_with_id(movie_id)
     movie = @service.by_id(movie_id)
-    create_movie_poro(movie)
+    create_movie_poros(movie)
   end
 
   def get_cast_with_movie_id(movie_id) 
@@ -39,13 +39,13 @@ class MovieFacade
     {count: review_poros.count, review_info: review_poros}
   end
 
-  def create_movie_poro(attributes)
-    MovieShowPoro.new(attributes)
-  end
-
   def create_movie_poros(attributes)
-    poros = attributes.map do |movie|
-      MovieIndexPoro.new(movie)
+    if attributes.class == Hash 
+      MoviePoro.new(attributes)
+    else
+      poros = attributes.map do |movie|
+        MoviePoro.new(movie)
+      end
     end
   end
 
