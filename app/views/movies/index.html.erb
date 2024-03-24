@@ -1,7 +1,7 @@
 <%= button_to "Discover", discover_path(@user.id), class: "btn discover", method: :get %>
 <h1>Search Results</h1>
-<% if @movies %>
-  <% @movies.each.with_index do |movie, idx| %>
+<% if @facade.movies %>
+  <% @facade.movies.each.with_index do |movie, idx| %>
     <div class="movies" id=<%= "results-#{idx}" %>>
       <p><%= link_to movie.title, movie_details_path(movie_id: movie.id) %></p>
       <p>Vote Avg: <%= movie.vote %></p>

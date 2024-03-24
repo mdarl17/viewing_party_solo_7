@@ -1,5 +1,5 @@
 class MovieService
-  def by_id(movie_id)
+  def get_movies_by_id(movie_id)
     get_url("https://api.themoviedb.org/3/movie/#{movie_id}?language=en-US")
   end
 
@@ -7,12 +7,12 @@ class MovieService
     get_url("/3/movie/top_rated?language=en-US&page=1")
   end
 
-  def movies_by_title(user_input)
+  def get_movies_by_title(user_input)
     get_url("/3/search/movie?query=#{user_input}&include_adult=false&language=en-US&page=1")
   end
 
   def get_cast(movie_id)
-    get_url("/3/movie/#{movie_id}/credits?language=en-US")
+    get_url("/3/movie/#{movie_id}/credits?language=en-US&page=1")
   end
 
   def get_reviews(movie_id) 

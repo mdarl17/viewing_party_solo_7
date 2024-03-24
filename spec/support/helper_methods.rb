@@ -43,10 +43,9 @@ def load_test_data
     ]
   end
 
-  def movies_show_data(movie_id)
-    facade = MovieFacade.new
-    facade.aggregate_movie_data(movie_id)
-  end
+  # def movies_show_data(movie_id)
+  #   facade = MovieFacade.new
+  # end
 
   # create Users
   10.times do |n|

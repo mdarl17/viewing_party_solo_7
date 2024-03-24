@@ -2,18 +2,16 @@ class ViewingPartiesController < ApplicationController
   def new 
     @users = User.all
     @user = User.find(params[:user_id])
-    facade = MovieFacade.new
-    movie_data = movies_show_data(params[:movie_id])
-    @movie = movie_data[:movie]
+    @facade = MovieFacade.new(top_movies: false, keywords: nil, movie_id: params[:movie_id])
   end
 
   def create
-    movie_data = movies_show_data(params[:movie_id])
-    @movie = movie_data[:movie]
     @user = User.find(params[:user_id])
-    unless ViewingParty.duration_valid?(params, @movie)
+    @facade = MovieFacade.new(top_movies: false, keywords: false, movie_id: )
+    require 'pry'; binding.pry
+    unless ViewingParty.duration_valid?(params, @facade.movies)
       flash[:alert] = "The party duration can't be shorter than the movie runtime"
-      redirect_to new_viewing_party_path(user_id: @user.id, movie_id: @movie.id)
+      redirect_to new_viewing_party_path(user_id: @user.id, movie_id: @facade.movies.id)
       return
     end
 
