@@ -1,4 +1,4 @@
-<h3><%= @user %>'s Dashoard</h3>
+<h3><%= @user.name.split(" ").first %>'s Dashoard</h3>
 <%= button_to "Discover", discover_path(@user.id), class: "btn discover", method: :get %>
 <% @user.viewing_parties.each do |party| %>
   
