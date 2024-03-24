@@ -1,15 +1,19 @@
 require "rails_helper" 
 
-RSpec.describe MovieIndexPoro do 
+RSpec.describe MoviePoro do 
   it "exists" do 
     attrs = {
-      original_title: "Shawshank Redemption",
-      vote_average: 8.314
+      id: nil,
+      title: "Shawshank Redemption",
+      vote_average: 8.314,
+      vote: nil,
+      runtime: nil,
+      genres: nil,
+      summary: nil
     }
 
-    movie = MovieIndexPoro.new(attrs)
-
-    expect(movie).to be_a MovieIndexPoro
+    movie = MoviePoro.new(attrs)
+    expect(movie).to be_a MoviePoro
     expect(movie.title).to eq("Shawshank Redemption")
     expect(movie.vote).to eq(8.314)
   end
