@@ -27,8 +27,7 @@ RSpec.describe MovieService, :vcr do
 
     describe "#movies_by_title" do 
       it "has a case-insensitive, partial-word search by movie title" do 
-        search_result = @service.movies_by_title("Strange Brew")[:results]
-
+        search_result = @service.get_movies_by_title("Strange Brew")[:results]
         search_result[0][:original_title] = "Strange Brew"
         search_result[0][:vote_average] = 6.078
       end
