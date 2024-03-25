@@ -7,8 +7,7 @@ class ViewingPartiesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @facade = MovieFacade.new(top_movies: false, keywords: false, movie_id: )
-    require 'pry'; binding.pry
+    @facade = MovieFacade.new(top_movies: false, keywords: false, movie_id: params[:movie_id])
     unless ViewingParty.duration_valid?(params, @facade.movies)
       flash[:alert] = "The party duration can't be shorter than the movie runtime"
       redirect_to new_viewing_party_path(user_id: @user.id, movie_id: @facade.movies.id)
