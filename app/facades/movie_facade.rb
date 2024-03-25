@@ -25,9 +25,4 @@ class MovieFacade
       nil
     end
   end
-
-  # def movie(movie_id)
-  #   movie_data = @service.by_id(movie_id)
-  #   mf = make_movie_poros(movie_data)
-  # end
 end
