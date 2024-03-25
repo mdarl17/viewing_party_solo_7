@@ -52,7 +52,7 @@ RSpec.describe "New Viewing Party page", :vcr, type: :feature do
 
       click_button "Create Party"
 
-      expect(current_path).to eq(new_viewing_party_path(User.last.id, @movie.id))
+      expect(current_path).to eq(new_viewing_party_path(User.last.id, @movie_id))
       expect(page).to have_content("The party duration can't be shorter than the movie runtime")
     end
 
