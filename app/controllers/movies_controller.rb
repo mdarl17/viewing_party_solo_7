@@ -3,12 +3,12 @@ class MoviesController < ApplicationController
     @user = User.find(params[:id])
 
     if params[:commit] == ("Find Top Rated Movies")
-      @facade = MovieFacade.new(top_movies: true, keywords: nil, movie_id: nil)
+      @facade = MovieFacade.new(top_movies: true)
     elsif params[:commit] == "Find Movies"
       if params[:keyword_or_movie_id].match(/[0-9]+/)
-        @movie = MovieFacade.new(top_movies: false, keywords: nil, movie_id: params[:keyword_or_movie_id])
+        @movie = MovieFacade.new(movie_id: params[:keyword_or_movie_id])
       else 
-        @facade = MovieFacade.new(top_movies: false, keywords: params[:keyword_or_movie_id], movie_id: nil)
+        @facade = MovieFacade.new(keywords: params[:keyword_or_movie_id])
       end
     else
       flash[:message] = "Sorry, we were not able to find any movies with your entry. Please try again."
@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    facade = MovieFacade.new(top_movies: false, keywords: nil, movie_id: params[:movie_id])
+    facade = MovieFacade.new(movie_id: params[:movie_id])
     @user = User.find(params[:id])
     @facade = facade.movies
   end

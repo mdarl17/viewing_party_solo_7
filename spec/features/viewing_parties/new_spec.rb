@@ -4,7 +4,7 @@ RSpec.describe "New Viewing Party page", :vcr, type: :feature do
   before(:each) do 
     load_test_data
     @movie_id = 264660
-    @facade = MovieFacade.new(top_movies: false, keywords: nil, movie_id: @movie_id)
+    @facade = MovieFacade.new(movie_id: @movie_id)
   end
    describe "a user creates a new viewing party" do 
     it "has a form users can fill out and submit to make a new viewing party" do 

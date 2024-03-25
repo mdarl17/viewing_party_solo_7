@@ -2,14 +2,14 @@ require "rails_helper"
 
 RSpec.describe MovieFacade, :vcr do 
   it "exists" do 
-    facade = MovieFacade.new(top_movies: true, keywords:nil, movie_id: nil)
+    facade = MovieFacade.new(top_movies: true)
     expect(facade).to be_a MovieFacade
   end
 
   describe "methods" do 
     describe "#movies" do 
       it "returns TMDB's top movies as an array of ruby objects with title and average vote attributes" do 
-        facade = MovieFacade.new(top_movies: true, keywords: false, movie_id: false)
+        facade = MovieFacade.new(top_movies: true)
         top_movies = facade.movies
 
         top_movies.each do |movie|
@@ -32,7 +32,7 @@ RSpec.describe MovieFacade, :vcr do
 
     describe "#movies(keyword)" do 
       it "returns a user's search results that case-insensitively and partially match, as ruby objects" do
-        facade = MovieFacade.new(top_movies: false, keywords: "Strange Brew", movie_id: nil)
+        facade = MovieFacade.new(keywords: "Strange Brew")
 
         facade.movies.each do |movie|
           expect(movie).to be_a MoviePoro
@@ -43,7 +43,7 @@ RSpec.describe MovieFacade, :vcr do
       end
 
       it "returns a user's search results that case-insensitively and partially match, as ruby objects" do
-        facade = MovieFacade.new(top_movies: false, keywords: "StrANg", movie_id: nil)
+        facade = MovieFacade.new(keywords: "StrANg")
 
         facade.movies.each do |movie|
           expect(movie.title.downcase).to include("strang")
@@ -57,7 +57,7 @@ RSpec.describe MovieFacade, :vcr do
 
     describe "#movie(movie_id)" do 
       it "searches the movie database for movies with the provided id" do 
-        facade =  MovieFacade.new(top_movies: false, keywords: nil, movie_id: 264660)
+        facade =  MovieFacade.new(movie_id: 264660)
         expect(facade.movies).to be_a MoviePoro
         expect(facade.movies.id).to eq(264660)
         expect(facade.movies.title).to eq("Ex Machina")

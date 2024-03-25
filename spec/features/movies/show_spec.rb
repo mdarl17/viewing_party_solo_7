@@ -4,7 +4,7 @@ RSpec.describe "Movie Details Page", :vcr, type: :feature do
   before(:each) do 
     @user = User.create!(name: 'Tommy', email: 'tommy@email.com')
     @movie_id = 264660
-    @facade = MovieFacade.new(top_movies: false, keywords: nil, movie_id: @movie_id)
+    @facade = MovieFacade.new(movie_id: @movie_id)
     visit movie_details_path(id: @user.id, movie_id: @movie_id)
   end
 
